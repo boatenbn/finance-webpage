@@ -11,6 +11,12 @@ body {
     background-color: #f9f9f9;
 }
 
+/* Accessibility: Focus outline for interactive elements */
+*:focus {
+    outline: 2px dashed #4CAF50;
+    outline-offset: 3px;
+}
+
 /* Header Styles */
 header {
     background-color: #4CAF50;
@@ -21,7 +27,6 @@ header {
 }
 
 header h1 {
-    color: white;
     margin-bottom: 1rem;
     font-size: 2.2rem;
 }
@@ -74,7 +79,8 @@ h4 {
 }
 
 /* Posts Grid Styles */
-.post-list, .posts-container {
+.post-list,
+.posts-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
@@ -85,12 +91,13 @@ h4 {
     background: white;
     border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .post:hover {
     transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .post img {
@@ -110,17 +117,18 @@ h4 {
 }
 
 /* List Styles */
-ul {
+main ul {
     list-style: none;
+    padding-left: 0;
 }
 
-ul li {
+main ul li {
     margin-bottom: 1rem;
     padding-left: 1.5rem;
     position: relative;
 }
 
-ul li::before {
+main ul li::before {
     content: "•";
     color: #4CAF50;
     position: absolute;
@@ -137,7 +145,7 @@ footer {
 }
 
 footer h2 {
-    color: #4CAF50;
+    color: white;
     margin-bottom: 1rem;
 }
 
@@ -146,9 +154,15 @@ footer ul {
     justify-content: center;
     gap: 2rem;
     margin-top: 1.5rem;
+    list-style: none; /* Removed bullet points */
+    padding-left: 0;
 }
 
 footer ul li {
+    font-weight: bold;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05rem;
     padding: 0;
 }
 
@@ -169,7 +183,8 @@ footer ul li::before {
         margin: 0 auto;
     }
 
-    .post-list, .posts-container {
+    .post-list,
+    .posts-container {
         grid-template-columns: 1fr;
     }
 
